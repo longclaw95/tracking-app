@@ -29,6 +29,10 @@ public class Task {
     @Column(name="priority", nullable = false)
     private TaskPriority priority;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="task_list_id")
+    private TaskList taskList;
+
     @Column(name="created", nullable = false)
     private LocalDateTime created;
 
@@ -38,13 +42,14 @@ public class Task {
     public Task() {
     }
 
-    public Task(UUID id, String title, String description, LocalDateTime due_date, TaskStatus status, TaskPriority priority, LocalDateTime created, LocalDateTime updated) {
+    public Task(UUID id, String title, String description, LocalDateTime due_date, TaskStatus status, TaskPriority priority, TaskList taskList, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.due_date = due_date;
         this.status = status;
         this.priority = priority;
+        this.taskList = taskList;
         this.created = created;
         this.updated = updated;
     }
@@ -53,60 +58,68 @@ public class Task {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public LocalDateTime getDue_date() {
         return due_date;
-    }
-
-    public void setDue_date(LocalDateTime due_date) {
-        this.due_date = due_date;
     }
 
     public TaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(TaskStatus status) {
-        this.status = status;
-    }
-
     public TaskPriority getPriority() {
         return priority;
     }
 
-    public void setPriority(TaskPriority priority) {
-        this.priority = priority;
+    public TaskList getTaskList() {
+        return taskList;
     }
 
     public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
     public LocalDateTime getUpdated() {
         return updated;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDue_date(LocalDateTime due_date) {
+        this.due_date = due_date;
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
+    }
+
+    public void setPriority(TaskPriority priority) {
+        this.priority = priority;
+    }
+
+    public void setTaskList(TaskList taskList) {
+        this.taskList = taskList;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     public void setUpdated(LocalDateTime updated) {
@@ -117,12 +130,12 @@ public class Task {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
-        return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(due_date, task.due_date) && status == task.status && priority == task.priority && Objects.equals(created, task.created) && Objects.equals(updated, task.updated);
+        return Objects.equals(id, task.id) && Objects.equals(title, task.title) && Objects.equals(description, task.description) && Objects.equals(due_date, task.due_date) && status == task.status && priority == task.priority && Objects.equals(taskList, task.taskList) && Objects.equals(created, task.created) && Objects.equals(updated, task.updated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, due_date, status, priority, created, updated);
+        return Objects.hash(id, title, description, due_date, status, priority, taskList, created, updated);
     }
 
     @Override
@@ -134,6 +147,7 @@ public class Task {
                 ", due_date=" + due_date +
                 ", status=" + status +
                 ", priority=" + priority +
+                ", taskList=" + taskList +
                 ", created=" + created +
                 ", updated=" + updated +
                 '}';
