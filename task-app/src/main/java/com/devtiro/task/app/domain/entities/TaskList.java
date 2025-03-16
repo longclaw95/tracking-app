@@ -26,17 +26,21 @@ public class TaskList {
     })
     private List<Task> tasks;
 
+    @Column(name="created", nullable = false)
+    private LocalDateTime created;
+
     @Column(name="updated", nullable = false)
     private LocalDateTime updated;
 
     public TaskList() {
     }
 
-    public TaskList(UUID id, String title, String description, List<Task> tasks, LocalDateTime updated) {
+    public TaskList(UUID id, String title, String description, List<Task> tasks, LocalDateTime created, LocalDateTime updated) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.tasks = tasks;
+        this.created = created;
         this.updated = updated;
     }
 
@@ -54,6 +58,10 @@ public class TaskList {
 
     public List<Task> getTasks() {
         return tasks;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
     }
 
     public LocalDateTime getUpdated() {
@@ -76,6 +84,10 @@ public class TaskList {
         this.tasks = tasks;
     }
 
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
@@ -84,12 +96,12 @@ public class TaskList {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         TaskList taskList = (TaskList) o;
-        return Objects.equals(id, taskList.id) && Objects.equals(title, taskList.title) && Objects.equals(description, taskList.description) && Objects.equals(tasks, taskList.tasks) && Objects.equals(updated, taskList.updated);
+        return Objects.equals(id, taskList.id) && Objects.equals(title, taskList.title) && Objects.equals(description, taskList.description) && Objects.equals(tasks, taskList.tasks) && Objects.equals(created, taskList.created) && Objects.equals(updated, taskList.updated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, tasks, updated);
+        return Objects.hash(id, title, description, tasks, created, updated);
     }
 
     @Override
@@ -99,8 +111,8 @@ public class TaskList {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", tasks=" + tasks +
+                ", created=" + created +
                 ", updated=" + updated +
                 '}';
     }
-
 }
