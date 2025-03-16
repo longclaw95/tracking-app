@@ -1,11 +1,11 @@
-package com.devtiro.task.mappers.impl;
+package com.devtiro.task.app.mappers.impl;
 
 import com.devtiro.task.app.domain.dto.TaskListDto;
 import com.devtiro.task.app.domain.entities.Task;
 import com.devtiro.task.app.domain.entities.TaskList;
 import com.devtiro.task.app.domain.entities.TaskStatus;
-import com.devtiro.task.mappers.TaskListMapper;
-import com.devtiro.task.mappers.TaskMapper;
+import com.devtiro.task.app.mappers.TaskListMapper;
+import com.devtiro.task.app.mappers.TaskMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

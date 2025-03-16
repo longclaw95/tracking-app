@@ -1,8 +1,8 @@
-package com.devtiro.task.mappers.impl;
+package com.devtiro.task.app.mappers.impl;
 
 import com.devtiro.task.app.domain.dto.TaskDto;
 import com.devtiro.task.app.domain.entities.Task;
-import com.devtiro.task.mappers.TaskMapper;
+import com.devtiro.task.app.mappers.TaskMapper;
 import org.springframework.stereotype.Component;
 
 

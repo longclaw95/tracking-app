@@ -1,4 +1,4 @@
-package com.devtiro.task.mappers;
+package com.devtiro.task.app.mappers;
 
 import com.devtiro.task.app.domain.dto.TaskDto;
 import com.devtiro.task.app.domain.entities.Task;
