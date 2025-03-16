@@ -11,7 +11,7 @@ public record TaskDto(
         String title,
         String description,
         LocalDateTime dueDate,
-        TaskPriority priority,
+        TaskPriority priority ,
         TaskStatus status
 ) {
 }
